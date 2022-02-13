@@ -1,0 +1,575 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Ephesis&display=swap');
+/* @font-face{
+    font-family: ;
+    src: url();
+} */
+/* 國際編碼一定要在第一行，字體一定要在第二行，前面不可以加任何註解或內容 */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* 不累加邊框與內距 */
+}
+body{
+    font-family: Helvetica, Arial,"黑體-繁","Heiti TC","微軟正黑體","Microsoft JhengHei",sans-serif;
+}
+img{
+    display: block;
+    width: 100%;
+}
+/* ----------header的部分---------- */
+header{
+    position: relative; /* 兒子要依循爸爸 */
+    background-color: #f0bdb3;
+    height: 100vh;
+    border: solid 25px #FFF;
+    overflow: hidden;
+    z-index: 999;
+}
+header .logo{
+    position: absolute; /* 給position目的是為了跑動態 */
+    width: 75px;
+    left: 40px;
+    top: 40px;
+    animation: logo 3s;
+}
+@keyframes logo{
+    from{ left: -100px;}
+    to{ left: 40px;}
+}
+/* nav{
+    position: relative;
+    z-index: 999;
+} */
+nav ul{
+    list-style-type: none; /* 去掉點點 */
+    z-index: 999;
+    /* 可以寫在這裡是因為icon和menu都有設定position:absolute */
+}
+
+header .icon{
+    position: absolute; /* 定位依據為header */
+    right: 40px;
+    top: 40px;
+    animation: icon 2s forwards;
+}
+@keyframes icon{
+    from{ right: -200px;}
+    to{ right: 40px;}
+
+}
+.icon li{
+    width: 35px; /* 為了縮小svg，不然原本是滿版設定 */
+    margin: 0 5px;
+    opacity: .7; /* 不透明度 */
+    cursor: pointer;
+    /* list-style-type: none;也可以這樣寫，跟nav ul效果一樣 */
+}
+header .menu{
+    position: absolute; /* 定位依據為header */
+    right: 40px;
+    top: 100px;
+    animation: menu 2s backwards;
+}
+@keyframes menu{
+    from{ right: -500px;}
+    to{ right: 40px;}
+}
+.menu a{
+    /* display: block; */
+    width: 100px;
+    /* height: 35px;
+    line-height: 35px;  */
+    /* 行高設定和height一樣就是垂直置中 */
+    text-align: center;
+    text-decoration: none; /* 不要底線 */
+    color: gray;
+    border: gray 1px transparent; /* 透明邊框，騙hover */
+
+}
+.menu a:hover{
+    /* border: solid gray 0.1px; */
+    background-color: rgba(248, 236, 236, 0.4);
+}
+.menu a:visited{
+    color: #8F8681;
+}
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    .menu a{
+        display: block;
+        height: 50px;
+        line-height: 50px;
+        text-align:right;
+    }
+    .icon li{
+        display: inline-block; 
+    }
+    .menu li{
+        display: block; 
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    header .menu a{
+        display: block;
+        height: 50px;
+        line-height: 50px;
+        text-align:right;
+    }
+    header .icon li{
+        display: inline-block; 
+    }
+    header .menu li{
+        display: block; 
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    header .menu a{
+        display: inline-block;
+        height: 35px;
+        line-height: 35px;
+    }
+    header .icon li{
+        display: inline-block; 
+    }
+    header .menu li{
+        display: inline-block; 
+    }
+}
+
+.name{
+    position: absolute;
+    /* left: 200px; */
+    top: 45%;
+    z-index: 999;
+    animation: name 3s;
+}
+
+.name h3{
+    font-family: 'Ephesis', cursive;  /* 單獨用的字體就單獨寫 */
+}
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 767px) {
+    .name{left: 40px;
+    }
+    @keyframes name{
+        from{ left: -100px;}
+        to{ left: 40px;}
+    }
+    .name h2{
+        font-size: 2rem; /* 如果字體大小要更動的話要分開寫 */
+        font-weight: 300;
+    }
+    .name h3{
+        font-size: 1rem; /* 字級 */
+        font-weight: 500;
+        line-height: 1rem; /* 字間距 */
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .name{left: 120px;
+    }
+    @keyframes name{
+        from{ left: -100px;}
+        to{ left: 120px;}
+    }
+    .name h2{
+        font-size: 2rem; 
+        font-weight: 300;
+    }
+    .name h3{
+        font-size: 1rem; 
+        font-weight: 500;
+        line-height: 2rem; 
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .name{left: 200px;
+    }
+    @keyframes name{
+        from{ left: -100px;}
+        to{ left: 200px;}
+    }
+    .name h2{
+        font-size: 3rem; 
+        font-weight: 300;
+    }
+    .name h3{
+        font-size: 2rem; 
+        font-weight: 500;
+        line-height: 3rem; 
+    }
+}
+header figure{
+    width: 35%;
+    position: absolute; /* 不加的話，沒有人推它會往左上 */
+    right: 5px;
+    bottom: -50px; /* bottom: 0; *//* 找爸爸header *//* 因為both，可以把這行省略  */
+    z-index: 99;
+    opacity: .9;
+    animation: banner 3s both;
+}
+@keyframes banner{
+    from{ bottom: -100px;}
+    to{ bottom: -50px;}
+}
+.bg_video{
+    height:100vh;
+}
+.bg_video video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: .4;
+}
+   
+/* 共用的背景顏色，class=""要改動到html較麻煩 */
+.color1{
+    background-color: #E1DCD9;
+}
+.color2{
+    background-color: #8F8681;
+}
+.color3{
+    background-color: #A67F78;
+}
+/* ----------main的部分_共用區---------- */
+section{ /* 父層 */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 設定這個[section h1 W20% 那條]就不會展開了，只留這個它會抓兒子寬度 */
+    height: 100vh;
+}
+section h1{
+    width: 40%;
+    text-align: center; /* 可加可不加 */
+    color: #32435F;
+    font-size: 2.5rem;
+    margin: 30px 0;
+    border-top: solid 5px #32435F;
+    padding-top: 10px;
+    padding:10px 20px;
+}/* 長度可變，可加可不加 */
+/* ---service+news--- */
+.service-list,.news-list{ /* 爸爸 */
+    display: flex; /* 不加會變直列下來，需要再搞懂一點，只能管兒子 */
+    width: 80%;
+}
+.service-list article,.news-list article{
+    flex: 1; /* 2 */
+    margin: 50px 15px;
+    height: 65vh; /* 爸爸歸爸爸，兒子不會自動延展，所以要設定高度 */
+}
+/* .service-list h2,.news-list h2{
+    還沒完成
+} */
+/* service區 */
+.service-list article{ /* 兒子 */
+    position: relative; /* 1 */
+    background-size: cover;
+    background-position: center;
+    border-radius: 25px;
+    overflow: hidden; /* 不加，透明區塊會露出來 */
+}
+.service-list article:first-child{
+    flex: 1;
+    background-image: url(images/pt_svc1.jpg);
+}
+.service-list article:nth-child(2){
+    flex: 2;
+    background-image: url(images/pt_svc2.jpg);
+}
+.service-list article:last-child{
+    flex: 1;
+    background-image: url(images/pt_svc3.jpg);
+}
+.service-list a{
+    position: absolute; /* 1 */
+    left: 0; /* 1 *//* 透明區塊靠左下對齊 */
+    bottom: 0; /* 1 *//* 透明區塊靠左下對齊 */
+    width: 100%; /* 2 */
+    display: block;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: gainsboro;
+    text-decoration: none;
+}
+.service-list h2{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.6rem;
+    letter-spacing: .2rem; /* 字距 */
+    margin: 10px 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.service-list p{
+    /* 單行省略語法 */
+    overflow: hidden;
+    text-overflow: ellipsis; /* 超過不顯示? */
+    white-space: nowrap; /* 文字不換行 */
+}
+/* ----------about區---------- */
+#about{
+    background-image: url(images/pt_about.jpg);
+    background-size: cover;
+    background-attachment: fixed; /* WHAT 背景定住 */
+}
+#about h1{
+    width: 40%;
+    text-align: center; /* 可加可不加 */
+    color: #32435F;
+    font-size: 2.5rem;
+    margin: 30px 0;
+    border-top: solid 5px #32435F;
+    padding-top: 10px;
+    padding:10px 20px;
+}
+#about div{
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 自動取消延展，這部分要再複習 */
+    width: 55%;
+    height: 100vh;
+    background-color: rgba(147, 112, 216, 0.4);
+}
+#about p{
+    overflow: auto;
+    /* margin: 0 8% 4%; 上_左右_下原本設定的 */
+}
+/* scrollbox_套件_根據要求自訂與微調 */
+.scrollbox{
+    position: relative;
+    width: 80%;
+    height: 75vh;
+    /* margin: 20px auto; 與下行相同，下行較佳*/
+    margin: 0 8% 4%;
+    padding: 10px;
+    /* background-color: #fff; 註解掉變只剩下陰影*/
+    overflow: auto;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    /* -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;現下瀏覽器皆已支援，且前面已經設定 */
+  }
+  
+.scrollbox::-webkit-scrollbar {
+    width: 10px;
+    background: #eee;
+  }
+  
+.scrollbox::-webkit-scrollbar:horizontal {
+    height: 10px;
+  }
+  
+.scrollbox::-webkit-scrollbar-button {
+    width: 10px;
+    height: 10px;
+    background: rgb(190, 164, 206);
+  }
+  
+.scrollbox::-webkit-scrollbar-thumb {
+    background: rgb(190, 164, 206);
+  }
+  
+.scrollbox::-webkit-scrollbar-corner { /* 左右捲軸 */
+    background: #999;
+  }
+ 
+.service-list h2{  /* 還沒完成 */
+    overflow: hidden;
+    white-space: nowrap; /* 文字不換行 */
+    margin: 10px 0;
+}
+/* ----------news區---------- */
+.news-list article{
+    background-color: rgb(187, 196, 164);
+    box-shadow: 2px 2px 5px darkslategray; /* x y 模糊 color */
+    border-radius: 5px;
+    overflow: hidden; /* 加了圖片才不會覆蓋article(若有裝飾的話) */
+}
+.news-list figure{
+    height: 40%;
+    overflow: hidden;
+}
+.news-list figure img{
+    height: 100%; /* 一定要加高度100% */
+    object-fit: cover; /* 控制img本身 */
+}
+
+.news-list h2{
+    color: #444;
+    font-family: serif;
+    margin: 20px 50px;
+    padding-bottom: 15px;
+    text-align: center;
+    border-bottom: 1px solid #888;
+}
+.news-list p{
+    /* 多行省略語法 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical; /* 指定框是水平還是垂直佈置其內容。 */
+    -webkit-line-clamp: 5;
+    margin: 10px 35px;
+    margin-bottom: 5vh;
+    text-align: justify; /* 齊行 */
+}
+.news-list a{ /* more按鈕 */
+    display: block;
+    width: 5rem;
+    padding: 0.5rem 0;
+    margin: 30px auto;
+    text-align: center;
+    border: 2px solid rgb(91, 133, 108);
+    border-radius: 25px;
+    background-color:rgb(187, 196, 164);
+    color: #444;
+    text-decoration: none;
+}
+/* video區 */
+#video div{
+    height: 70vh;
+}
+#video video{
+    height: 100%;
+    object-fit: contain;
+}
+/* contact區 */
+#contact_form{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+#contact_form input,#textarea{
+    padding: 5px;
+    margin-bottom: 20px;
+    border-radius: 5px 0;
+    border: 2px solid rgb(91, 133, 108);
+    /* box-shadow: rgb(214, 115, 34); */
+    border-width: var(--brwe,1px);
+    background-color: rgba(var(--bge,255,255,255),var(--alpha-bge,1));
+    border-style: solid;
+    border-color: rgba(var(--brde,163,217,246),var(--alpha-brde,1));
+    
+}
+#contact label{
+    color: antiquewhite;
+    margin: 3px 0;
+    font-size: large;
+}
+/* CSS button hover */
+button {
+    /* position: relative; */
+    /* outline: none; */
+    margin: 10px auto;
+    text-decoration: none;
+    border-radius: 50px;
+    border-color: rgb(29, 109, 82);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer; /* 游標樣式 */
+    text-transform: uppercase; /* 強制大寫 */
+    height: 40px;
+    width: 120px;
+    /* opacity: 1; */
+    background-color: #fae3e3;
+    border: 1px solid rgba(22, 76, 167, 0.6);
+  }
+  
+button span {
+    color: #3c6137;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0.7px;
+  }
+button:hover {
+    animation: rotate 0.7s ease-in-out both;
+  }
+button:hover span {
+    animation: storm 0.7s ease-in-out both;
+    animation-delay: 0.06s;
+  }
+  
+@keyframes rotate {
+    0% {
+      transform: rotate(0deg) translate3d(0, 0, 0);
+    }
+    25% {
+      transform: rotate(3deg) translate3d(0, 0, 0);
+    }
+    50% {
+      transform: rotate(-3deg) translate3d(0, 0, 0);
+    }
+    75% {
+      transform: rotate(1deg) translate3d(0, 0, 0);
+    }
+    100% {
+      transform: rotate(0deg) translate3d(0, 0, 0);
+    }
+  }
+@keyframes storm {
+    0% {
+      transform: translate3d(0, 0, 0) translateZ(0);
+    }
+    25% {
+      transform: translate3d(4px, 0, 0) translateZ(0);
+    }
+    50% {
+      transform: translate3d(-3px, 0, 0) translateZ(0);
+    }
+    75% {
+      transform: translate3d(2px, 0, 0) translateZ(0);
+    }
+    100% {
+      transform: translate3d(0, 0, 0) translateZ(0);
+    }
+  }
+/* 還沒練到字體安裝的部分 */
+
+#gotop{
+    display: none;
+    position: fixed; /* 固定 */
+    bottom: 145px;
+    right: 26px;
+    width: 50px;
+    height: 50px;
+    /* background-color: dimgray; */
+    cursor: pointer;
+    z-index: 9999;
+    font-size: 50px;
+    line-height: 50px;
+    opacity: 0.4;
+}
+/* ---footer區--- */
+footer{
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #D2AD9F;
+    border: solid 5px #FFF;
+}
+footer h1{
+    width: 75px;
+    margin: 20px;
+}
+footer .icon{
+    margin-right: 20px;
+    position: absolute; /* 定位依據為footer */
+    right: 10px;
+    top: 100px;
+    cursor: pointer;
+}
+footer .menu{
+    margin-right: 20px;
+}
